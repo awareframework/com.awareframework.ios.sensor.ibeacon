@@ -1,0 +1,16 @@
+PODS:
+  - com.awareframework.ios.sensor.ibeacon (0.1.0)
+
+DEPENDENCIES:
+  - com.awareframework.ios.sensor.ibeacon (from `../`)
+
+EXTERNAL SOURCES:
+  com.awareframework.ios.sensor.ibeacon:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  com.awareframework.ios.sensor.ibeacon: fedf80c2fc2d93a29255fd9d76013c6f780159ee
+
+PODFILE CHECKSUM: 70c93fc211ddff3fe2b91b8e40b7b834dba0a0c0
+
+COCOAPODS: 1.6.0.beta.2

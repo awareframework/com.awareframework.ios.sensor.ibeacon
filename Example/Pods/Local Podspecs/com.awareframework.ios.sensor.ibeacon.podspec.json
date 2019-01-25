@@ -1,0 +1,22 @@
+{
+  "name": "com.awareframework.ios.sensor.ibeacon",
+  "version": "0.1.0",
+  "summary": "A short description of com.awareframework.ios.sensor.ibeacon.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/tetujin/com.awareframework.ios.sensor.ibeacon",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "tetujin": "tetujin@ht.sfc.keio.ac.jp"
+  },
+  "source": {
+    "git": "https://github.com/tetujin/com.awareframework.ios.sensor.ibeacon.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "com.awareframework.ios.sensor.ibeacon/Classes/**/*"
+}

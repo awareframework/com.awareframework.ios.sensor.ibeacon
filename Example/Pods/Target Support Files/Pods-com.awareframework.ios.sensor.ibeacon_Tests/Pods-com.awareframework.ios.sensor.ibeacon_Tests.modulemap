@@ -1,0 +1,6 @@
+framework module Pods_com_awareframework_ios_sensor_ibeacon_Tests {
+  umbrella header "Pods-com.awareframework.ios.sensor.ibeacon_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

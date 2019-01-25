@@ -1,0 +1,6 @@
+framework module com_awareframework_ios_sensor_ibeacon {
+  umbrella header "com.awareframework.ios.sensor.ibeacon-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,769 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		36E3C0E925941FB30A176447CBD1D271 /* Pods-com.awareframework.ios.sensor.ibeacon_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD05558F311D992B72059A6E995674D /* Pods-com.awareframework.ios.sensor.ibeacon_Example-dummy.m */; };
+		7249286899E7E07E77A3694BB2E35539 /* com.awareframework.ios.sensor.ibeacon-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C5BC0DED1ECE37409C3CBDBDD055C09 /* com.awareframework.ios.sensor.ibeacon-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F9C8CB59E0F7A0832809249F4978474 /* Pods-com.awareframework.ios.sensor.ibeacon_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1C76913F356076CC18124B241E6D89 /* Pods-com.awareframework.ios.sensor.ibeacon_Tests-dummy.m */; };
+		809E2567DA6662010B7DC833E3EED4B2 /* Pods-com.awareframework.ios.sensor.ibeacon_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EEE76CCCBD5434E1F80BD845FF16E14 /* Pods-com.awareframework.ios.sensor.ibeacon_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		889C03C79680C65DFAE15F0ECBE47E73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		97D638C986B58A966E76B42F4A6B78AF /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6EEFD9180C5CAC8AA0CB57664B8124 /* ReplaceMe.swift */; };
+		A9F490E8822B5A47984D2EBE4081D24A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		B65D2CCC9CB5D1E38FF73D2223991709 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		E7C55EB8B0366F4F70062254E72D5F32 /* Pods-com.awareframework.ios.sensor.ibeacon_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 38503C06C4BDD265EDFB0DC34830ADB6 /* Pods-com.awareframework.ios.sensor.ibeacon_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F5F1C1C03C84FE979A8F940DA307D6A1 /* com.awareframework.ios.sensor.ibeacon-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B64CCC55E6E1F2807842BF707EA315FB /* com.awareframework.ios.sensor.ibeacon-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		030BC518295B8535DA94BCED12ED241D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AAA351D572CE1EB8C805EED8E1F039C2;
+			remoteInfo = com.awareframework.ios.sensor.ibeacon;
+		};
+		E3AE257EDE49C4FC29CF23A3046112DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C8AF1AB7389CCE015B1C040B0C586E4;
+			remoteInfo = "Pods-com.awareframework.ios.sensor.ibeacon_Example";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		041FEEA9183DA203704D19A0A599535D /* Pods-com.awareframework.ios.sensor.ibeacon_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-com.awareframework.ios.sensor.ibeacon_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		0E95D9A3458489C6943DBB6D651071F9 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		1C5BC0DED1ECE37409C3CBDBDD055C09 /* com.awareframework.ios.sensor.ibeacon-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "com.awareframework.ios.sensor.ibeacon-umbrella.h"; sourceTree = "<group>"; };
+		1F48AAC1CF2977859F3AAABF5913848A /* com.awareframework.ios.sensor.ibeacon-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "com.awareframework.ios.sensor.ibeacon-prefix.pch"; sourceTree = "<group>"; };
+		21C20D340F2AAEAC6A06BBF939519934 /* Pods-com.awareframework.ios.sensor.ibeacon_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-com.awareframework.ios.sensor.ibeacon_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		23A0F2FCCA80CC663B893190CA4179A3 /* com.awareframework.ios.sensor.ibeacon.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = com.awareframework.ios.sensor.ibeacon.modulemap; sourceTree = "<group>"; };
+		254178EA0C261B60EDF4DFDA4D62F8DC /* Pods_com_awareframework_ios_sensor_ibeacon_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_com_awareframework_ios_sensor_ibeacon_Tests.framework; path = "Pods-com.awareframework.ios.sensor.ibeacon_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CB45156B6EFF02F1CF464D65C424EDC /* Pods_com_awareframework_ios_sensor_ibeacon_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_com_awareframework_ios_sensor_ibeacon_Example.framework; path = "Pods-com.awareframework.ios.sensor.ibeacon_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		350A0FA112C6BC0AF9635F67C853727E /* Pods-com.awareframework.ios.sensor.ibeacon_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-com.awareframework.ios.sensor.ibeacon_Example-frameworks.sh"; sourceTree = "<group>"; };
+		38503C06C4BDD265EDFB0DC34830ADB6 /* Pods-com.awareframework.ios.sensor.ibeacon_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-com.awareframework.ios.sensor.ibeacon_Example-umbrella.h"; sourceTree = "<group>"; };
+		7BD05558F311D992B72059A6E995674D /* Pods-com.awareframework.ios.sensor.ibeacon_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-com.awareframework.ios.sensor.ibeacon_Example-dummy.m"; sourceTree = "<group>"; };
+		7F6B71C31E5DB3D3A3F22242A6E06AF9 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		88CFC094159161195565940E54118AEA /* Pods-com.awareframework.ios.sensor.ibeacon_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-com.awareframework.ios.sensor.ibeacon_Tests-Info.plist"; sourceTree = "<group>"; };
+		8C5C6FE72D224C2607615C4768F1A34B /* Pods-com.awareframework.ios.sensor.ibeacon_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-com.awareframework.ios.sensor.ibeacon_Example.modulemap"; sourceTree = "<group>"; };
+		8E6EEFD9180C5CAC8AA0CB57664B8124 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = com.awareframework.ios.sensor.ibeacon/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
+		8EEE76CCCBD5434E1F80BD845FF16E14 /* Pods-com.awareframework.ios.sensor.ibeacon_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-com.awareframework.ios.sensor.ibeacon_Tests-umbrella.h"; sourceTree = "<group>"; };
+		A377008F5B679B47593AA9B08A62FA35 /* Pods-com.awareframework.ios.sensor.ibeacon_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-com.awareframework.ios.sensor.ibeacon_Example-Info.plist"; sourceTree = "<group>"; };
+		AC8C9E547A3A7DDE57A6944D4C9E998D /* Pods-com.awareframework.ios.sensor.ibeacon_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-com.awareframework.ios.sensor.ibeacon_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		AC905E5C3CB175D9E63B218A69FA4114 /* Pods-com.awareframework.ios.sensor.ibeacon_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-com.awareframework.ios.sensor.ibeacon_Example.release.xcconfig"; sourceTree = "<group>"; };
+		ADDEA1081FA76BF20116EDF5C9A01DAE /* Pods-com.awareframework.ios.sensor.ibeacon_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-com.awareframework.ios.sensor.ibeacon_Tests.modulemap"; sourceTree = "<group>"; };
+		B36AB396275697EEE1A5B13BA8A38FE3 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B5D02323C5514BA48AC66E9ADD462339 /* com.awareframework.ios.sensor.ibeacon.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = com.awareframework.ios.sensor.ibeacon.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B64CCC55E6E1F2807842BF707EA315FB /* com.awareframework.ios.sensor.ibeacon-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "com.awareframework.ios.sensor.ibeacon-dummy.m"; sourceTree = "<group>"; };
+		BFFFE1CAA94CE896F98FD000AAF3C644 /* Pods-com.awareframework.ios.sensor.ibeacon_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-com.awareframework.ios.sensor.ibeacon_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D574D587EE887A3D4C00255144831289 /* Pods-com.awareframework.ios.sensor.ibeacon_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-com.awareframework.ios.sensor.ibeacon_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		DD1C76913F356076CC18124B241E6D89 /* Pods-com.awareframework.ios.sensor.ibeacon_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-com.awareframework.ios.sensor.ibeacon_Tests-dummy.m"; sourceTree = "<group>"; };
+		E13CD7B3DFDF2C4A2682ACFAEE12064E /* com_awareframework_ios_sensor_ibeacon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = com_awareframework_ios_sensor_ibeacon.framework; path = com.awareframework.ios.sensor.ibeacon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBE631BB80D9E92F5E63C336E02A0F92 /* com.awareframework.ios.sensor.ibeacon-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "com.awareframework.ios.sensor.ibeacon-Info.plist"; sourceTree = "<group>"; };
+		F35B84876BFEBC36BE2C3D6EC770B879 /* com.awareframework.ios.sensor.ibeacon.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = com.awareframework.ios.sensor.ibeacon.xcconfig; sourceTree = "<group>"; };
+		F39CB45A227BE8B51AABAB8852FA9B64 /* Pods-com.awareframework.ios.sensor.ibeacon_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-com.awareframework.ios.sensor.ibeacon_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		FA3E85F2E4F47DD7943797B77B50E6C4 /* Pods-com.awareframework.ios.sensor.ibeacon_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-com.awareframework.ios.sensor.ibeacon_Tests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		27C6572E2BBF3460A11CA0441368FDB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				889C03C79680C65DFAE15F0ECBE47E73 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9EF9BC14F7C3941032EB8B93EC8E040D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9F490E8822B5A47984D2EBE4081D24A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3E0DAEF3D9058885BCF36D4D38F72FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B65D2CCC9CB5D1E38FF73D2223991709 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03D60401EE26757A0017213058019FEE /* Pods-com.awareframework.ios.sensor.ibeacon_Example */ = {
+			isa = PBXGroup;
+			children = (
+				8C5C6FE72D224C2607615C4768F1A34B /* Pods-com.awareframework.ios.sensor.ibeacon_Example.modulemap */,
+				BFFFE1CAA94CE896F98FD000AAF3C644 /* Pods-com.awareframework.ios.sensor.ibeacon_Example-acknowledgements.markdown */,
+				21C20D340F2AAEAC6A06BBF939519934 /* Pods-com.awareframework.ios.sensor.ibeacon_Example-acknowledgements.plist */,
+				7BD05558F311D992B72059A6E995674D /* Pods-com.awareframework.ios.sensor.ibeacon_Example-dummy.m */,
+				350A0FA112C6BC0AF9635F67C853727E /* Pods-com.awareframework.ios.sensor.ibeacon_Example-frameworks.sh */,
+				A377008F5B679B47593AA9B08A62FA35 /* Pods-com.awareframework.ios.sensor.ibeacon_Example-Info.plist */,
+				38503C06C4BDD265EDFB0DC34830ADB6 /* Pods-com.awareframework.ios.sensor.ibeacon_Example-umbrella.h */,
+				D574D587EE887A3D4C00255144831289 /* Pods-com.awareframework.ios.sensor.ibeacon_Example.debug.xcconfig */,
+				AC905E5C3CB175D9E63B218A69FA4114 /* Pods-com.awareframework.ios.sensor.ibeacon_Example.release.xcconfig */,
+			);
+			name = "Pods-com.awareframework.ios.sensor.ibeacon_Example";
+			path = "Target Support Files/Pods-com.awareframework.ios.sensor.ibeacon_Example";
+			sourceTree = "<group>";
+		};
+		30FE75C12570103B9CAAF9BB783B4284 /* Pods-com.awareframework.ios.sensor.ibeacon_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				ADDEA1081FA76BF20116EDF5C9A01DAE /* Pods-com.awareframework.ios.sensor.ibeacon_Tests.modulemap */,
+				F39CB45A227BE8B51AABAB8852FA9B64 /* Pods-com.awareframework.ios.sensor.ibeacon_Tests-acknowledgements.markdown */,
+				041FEEA9183DA203704D19A0A599535D /* Pods-com.awareframework.ios.sensor.ibeacon_Tests-acknowledgements.plist */,
+				DD1C76913F356076CC18124B241E6D89 /* Pods-com.awareframework.ios.sensor.ibeacon_Tests-dummy.m */,
+				88CFC094159161195565940E54118AEA /* Pods-com.awareframework.ios.sensor.ibeacon_Tests-Info.plist */,
+				8EEE76CCCBD5434E1F80BD845FF16E14 /* Pods-com.awareframework.ios.sensor.ibeacon_Tests-umbrella.h */,
+				AC8C9E547A3A7DDE57A6944D4C9E998D /* Pods-com.awareframework.ios.sensor.ibeacon_Tests.debug.xcconfig */,
+				FA3E85F2E4F47DD7943797B77B50E6C4 /* Pods-com.awareframework.ios.sensor.ibeacon_Tests.release.xcconfig */,
+			);
+			name = "Pods-com.awareframework.ios.sensor.ibeacon_Tests";
+			path = "Target Support Files/Pods-com.awareframework.ios.sensor.ibeacon_Tests";
+			sourceTree = "<group>";
+		};
+		44D5347904CF754D6785B84253F2574A /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		4739023605BBFA95F7998C7894705A59 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				03D60401EE26757A0017213058019FEE /* Pods-com.awareframework.ios.sensor.ibeacon_Example */,
+				30FE75C12570103B9CAAF9BB783B4284 /* Pods-com.awareframework.ios.sensor.ibeacon_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		5F2B17190D7162BD6CAC8483B877C3BC /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				B5D02323C5514BA48AC66E9ADD462339 /* com.awareframework.ios.sensor.ibeacon.podspec */,
+				7F6B71C31E5DB3D3A3F22242A6E06AF9 /* LICENSE */,
+				0E95D9A3458489C6943DBB6D651071F9 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				B36AB396275697EEE1A5B13BA8A38FE3 /* Podfile */,
+				856172E98398AADBCA87EB0ACBB5559E /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				E2F3F8B0BE200BB1629B9ACE9F9F8F0B /* Products */,
+				4739023605BBFA95F7998C7894705A59 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		856172E98398AADBCA87EB0ACBB5559E /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A6128DACC06023F91457EDA1F32E91E2 /* com.awareframework.ios.sensor.ibeacon */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		A6128DACC06023F91457EDA1F32E91E2 /* com.awareframework.ios.sensor.ibeacon */ = {
+			isa = PBXGroup;
+			children = (
+				8E6EEFD9180C5CAC8AA0CB57664B8124 /* ReplaceMe.swift */,
+				5F2B17190D7162BD6CAC8483B877C3BC /* Pod */,
+				CA3C68E7E65A6E12B3F566A0E42F70D4 /* Support Files */,
+			);
+			name = com.awareframework.ios.sensor.ibeacon;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				44D5347904CF754D6785B84253F2574A /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA3C68E7E65A6E12B3F566A0E42F70D4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				23A0F2FCCA80CC663B893190CA4179A3 /* com.awareframework.ios.sensor.ibeacon.modulemap */,
+				F35B84876BFEBC36BE2C3D6EC770B879 /* com.awareframework.ios.sensor.ibeacon.xcconfig */,
+				B64CCC55E6E1F2807842BF707EA315FB /* com.awareframework.ios.sensor.ibeacon-dummy.m */,
+				EBE631BB80D9E92F5E63C336E02A0F92 /* com.awareframework.ios.sensor.ibeacon-Info.plist */,
+				1F48AAC1CF2977859F3AAABF5913848A /* com.awareframework.ios.sensor.ibeacon-prefix.pch */,
+				1C5BC0DED1ECE37409C3CBDBDD055C09 /* com.awareframework.ios.sensor.ibeacon-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/com.awareframework.ios.sensor.ibeacon";
+			sourceTree = "<group>";
+		};
+		E2F3F8B0BE200BB1629B9ACE9F9F8F0B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E13CD7B3DFDF2C4A2682ACFAEE12064E /* com_awareframework_ios_sensor_ibeacon.framework */,
+				2CB45156B6EFF02F1CF464D65C424EDC /* Pods_com_awareframework_ios_sensor_ibeacon_Example.framework */,
+				254178EA0C261B60EDF4DFDA4D62F8DC /* Pods_com_awareframework_ios_sensor_ibeacon_Tests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		289849BE2A8D774BF347DA6E58C0D867 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7249286899E7E07E77A3694BB2E35539 /* com.awareframework.ios.sensor.ibeacon-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0E940D148A3D3538D1DCA63B7C04247 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				809E2567DA6662010B7DC833E3EED4B2 /* Pods-com.awareframework.ios.sensor.ibeacon_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8571EB0C87D830DB357FF62CAB9D9DF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7C55EB8B0366F4F70062254E72D5F32 /* Pods-com.awareframework.ios.sensor.ibeacon_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2C8AF1AB7389CCE015B1C040B0C586E4 /* Pods-com.awareframework.ios.sensor.ibeacon_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEB1FFA7517444750AD6EC7E37CB5385 /* Build configuration list for PBXNativeTarget "Pods-com.awareframework.ios.sensor.ibeacon_Example" */;
+			buildPhases = (
+				E8571EB0C87D830DB357FF62CAB9D9DF /* Headers */,
+				FAFC5402D21A4ED47C3CDEE147287995 /* Sources */,
+				27C6572E2BBF3460A11CA0441368FDB8 /* Frameworks */,
+				99C3E96E8B18D0EB9108CA1F2BD5C810 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5DC66F5DEC5D7CF8F085AC03B14D0C4 /* PBXTargetDependency */,
+			);
+			name = "Pods-com.awareframework.ios.sensor.ibeacon_Example";
+			productName = "Pods-com.awareframework.ios.sensor.ibeacon_Example";
+			productReference = 2CB45156B6EFF02F1CF464D65C424EDC /* Pods_com_awareframework_ios_sensor_ibeacon_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		847DD93AD2F5D211164712ACC480A0DB /* Pods-com.awareframework.ios.sensor.ibeacon_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 953EA910BFC7A7ABE01B6448E0D655A1 /* Build configuration list for PBXNativeTarget "Pods-com.awareframework.ios.sensor.ibeacon_Tests" */;
+			buildPhases = (
+				D0E940D148A3D3538D1DCA63B7C04247 /* Headers */,
+				5E6A6F49C350DD18C5FDCE5E4D4EA428 /* Sources */,
+				B3E0DAEF3D9058885BCF36D4D38F72FE /* Frameworks */,
+				7EF001B9A6052D0D05BBF915E4AF88B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9FA24D4AEB567833B2E65560F683DD39 /* PBXTargetDependency */,
+			);
+			name = "Pods-com.awareframework.ios.sensor.ibeacon_Tests";
+			productName = "Pods-com.awareframework.ios.sensor.ibeacon_Tests";
+			productReference = 254178EA0C261B60EDF4DFDA4D62F8DC /* Pods_com_awareframework_ios_sensor_ibeacon_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AAA351D572CE1EB8C805EED8E1F039C2 /* com.awareframework.ios.sensor.ibeacon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82EB860AD467C8FF0883B3BBC812D0F2 /* Build configuration list for PBXNativeTarget "com.awareframework.ios.sensor.ibeacon" */;
+			buildPhases = (
+				289849BE2A8D774BF347DA6E58C0D867 /* Headers */,
+				D257EF56C64D323320F5BCAD5AA3F343 /* Sources */,
+				9EF9BC14F7C3941032EB8B93EC8E040D /* Frameworks */,
+				207578D532C5BE75918D4BB26B8DFBAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = com.awareframework.ios.sensor.ibeacon;
+			productName = com.awareframework.ios.sensor.ibeacon;
+			productReference = E13CD7B3DFDF2C4A2682ACFAEE12064E /* com_awareframework_ios_sensor_ibeacon.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = E2F3F8B0BE200BB1629B9ACE9F9F8F0B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AAA351D572CE1EB8C805EED8E1F039C2 /* com.awareframework.ios.sensor.ibeacon */,
+				2C8AF1AB7389CCE015B1C040B0C586E4 /* Pods-com.awareframework.ios.sensor.ibeacon_Example */,
+				847DD93AD2F5D211164712ACC480A0DB /* Pods-com.awareframework.ios.sensor.ibeacon_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		207578D532C5BE75918D4BB26B8DFBAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7EF001B9A6052D0D05BBF915E4AF88B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99C3E96E8B18D0EB9108CA1F2BD5C810 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5E6A6F49C350DD18C5FDCE5E4D4EA428 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F9C8CB59E0F7A0832809249F4978474 /* Pods-com.awareframework.ios.sensor.ibeacon_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D257EF56C64D323320F5BCAD5AA3F343 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5F1C1C03C84FE979A8F940DA307D6A1 /* com.awareframework.ios.sensor.ibeacon-dummy.m in Sources */,
+				97D638C986B58A966E76B42F4A6B78AF /* ReplaceMe.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAFC5402D21A4ED47C3CDEE147287995 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36E3C0E925941FB30A176447CBD1D271 /* Pods-com.awareframework.ios.sensor.ibeacon_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9FA24D4AEB567833B2E65560F683DD39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-com.awareframework.ios.sensor.ibeacon_Example";
+			target = 2C8AF1AB7389CCE015B1C040B0C586E4 /* Pods-com.awareframework.ios.sensor.ibeacon_Example */;
+			targetProxy = E3AE257EDE49C4FC29CF23A3046112DB /* PBXContainerItemProxy */;
+		};
+		B5DC66F5DEC5D7CF8F085AC03B14D0C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = com.awareframework.ios.sensor.ibeacon;
+			target = AAA351D572CE1EB8C805EED8E1F039C2 /* com.awareframework.ios.sensor.ibeacon */;
+			targetProxy = 030BC518295B8535DA94BCED12ED241D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		27125D3BA08B468E456847936984026C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D574D587EE887A3D4C00255144831289 /* Pods-com.awareframework.ios.sensor.ibeacon_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-com.awareframework.ios.sensor.ibeacon_Example/Pods-com.awareframework.ios.sensor.ibeacon_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-com.awareframework.ios.sensor.ibeacon_Example/Pods-com.awareframework.ios.sensor.ibeacon_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2FD6F0ACA97BD96B45A9A12F28319CF7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F35B84876BFEBC36BE2C3D6EC770B879 /* com.awareframework.ios.sensor.ibeacon.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/com.awareframework.ios.sensor.ibeacon/com.awareframework.ios.sensor.ibeacon-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/com.awareframework.ios.sensor.ibeacon/com.awareframework.ios.sensor.ibeacon-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/com.awareframework.ios.sensor.ibeacon/com.awareframework.ios.sensor.ibeacon.modulemap";
+				PRODUCT_MODULE_NAME = com_awareframework_ios_sensor_ibeacon;
+				PRODUCT_NAME = com_awareframework_ios_sensor_ibeacon;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3CB995A8BC7CA6972705FC2884B05A4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC8C9E547A3A7DDE57A6944D4C9E998D /* Pods-com.awareframework.ios.sensor.ibeacon_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-com.awareframework.ios.sensor.ibeacon_Tests/Pods-com.awareframework.ios.sensor.ibeacon_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-com.awareframework.ios.sensor.ibeacon_Tests/Pods-com.awareframework.ios.sensor.ibeacon_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5153DC2E9BB4F6D6F85AF7C0A4A2A27F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		5B093595F6DA9063896C72EE68DAFED7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA3E85F2E4F47DD7943797B77B50E6C4 /* Pods-com.awareframework.ios.sensor.ibeacon_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-com.awareframework.ios.sensor.ibeacon_Tests/Pods-com.awareframework.ios.sensor.ibeacon_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-com.awareframework.ios.sensor.ibeacon_Tests/Pods-com.awareframework.ios.sensor.ibeacon_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6A949A208667F02694AF29D5DCC8D4BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		835F5F486E947DF0FC8482892876033D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F35B84876BFEBC36BE2C3D6EC770B879 /* com.awareframework.ios.sensor.ibeacon.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/com.awareframework.ios.sensor.ibeacon/com.awareframework.ios.sensor.ibeacon-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/com.awareframework.ios.sensor.ibeacon/com.awareframework.ios.sensor.ibeacon-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/com.awareframework.ios.sensor.ibeacon/com.awareframework.ios.sensor.ibeacon.modulemap";
+				PRODUCT_MODULE_NAME = com_awareframework_ios_sensor_ibeacon;
+				PRODUCT_NAME = com_awareframework_ios_sensor_ibeacon;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AAB31320A92AD9DF4F486E87F625ACA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC905E5C3CB175D9E63B218A69FA4114 /* Pods-com.awareframework.ios.sensor.ibeacon_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-com.awareframework.ios.sensor.ibeacon_Example/Pods-com.awareframework.ios.sensor.ibeacon_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-com.awareframework.ios.sensor.ibeacon_Example/Pods-com.awareframework.ios.sensor.ibeacon_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5153DC2E9BB4F6D6F85AF7C0A4A2A27F /* Debug */,
+				6A949A208667F02694AF29D5DCC8D4BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		82EB860AD467C8FF0883B3BBC812D0F2 /* Build configuration list for PBXNativeTarget "com.awareframework.ios.sensor.ibeacon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FD6F0ACA97BD96B45A9A12F28319CF7 /* Debug */,
+				835F5F486E947DF0FC8482892876033D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		953EA910BFC7A7ABE01B6448E0D655A1 /* Build configuration list for PBXNativeTarget "Pods-com.awareframework.ios.sensor.ibeacon_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CB995A8BC7CA6972705FC2884B05A4E /* Debug */,
+				5B093595F6DA9063896C72EE68DAFED7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AEB1FFA7517444750AD6EC7E37CB5385 /* Build configuration list for PBXNativeTarget "Pods-com.awareframework.ios.sensor.ibeacon_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27125D3BA08B468E456847936984026C /* Debug */,
+				AAB31320A92AD9DF4F486E87F625ACA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
