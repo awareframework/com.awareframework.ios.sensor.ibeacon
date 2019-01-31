@@ -2,7 +2,6 @@ use_frameworks!
 
 target 'com.awareframework.ios.sensor.ibeacon_Example' do
   pod 'com.awareframework.ios.sensor.ibeacon', :path => '../'
-
   target 'com.awareframework.ios.sensor.ibeacon_Tests' do
     inherit! :search_paths
 

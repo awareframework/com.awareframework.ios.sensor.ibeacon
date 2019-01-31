@@ -1,16 +1,45 @@
 PODS:
-  - com.awareframework.ios.sensor.ibeacon (0.1.0)
+  - com.awareframework.ios.sensor.core (0.4.2):
+    - Networking (~> 4.4.0)
+    - ReachabilitySwift (~> 4.3.0)
+    - RealmSwift (~> 3.12.0)
+    - SwiftyJSON (~> 4.2.0)
+  - com.awareframework.ios.sensor.ibeacon (0.1.0):
+    - com.awareframework.ios.sensor.core (~> 0.4.2)
+  - Networking (4.4.0)
+  - ReachabilitySwift (4.3.0)
+  - Realm (3.12.0):
+    - Realm/Headers (= 3.12.0)
+  - Realm/Headers (3.12.0)
+  - RealmSwift (3.12.0):
+    - Realm (= 3.12.0)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - com.awareframework.ios.sensor.ibeacon (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - com.awareframework.ios.sensor.core
+    - Networking
+    - ReachabilitySwift
+    - Realm
+    - RealmSwift
+    - SwiftyJSON
 
 EXTERNAL SOURCES:
   com.awareframework.ios.sensor.ibeacon:
     :path: "../"
 
 SPEC CHECKSUMS:
-  com.awareframework.ios.sensor.ibeacon: fedf80c2fc2d93a29255fd9d76013c6f780159ee
+  com.awareframework.ios.sensor.core: 122afea3dbde245316e68359b8e6801a96ad4309
+  com.awareframework.ios.sensor.ibeacon: 5cf5dc88a3f93e87704f1799b28f5c74864aad77
+  Networking: cbef47ab030af248248c26a696adb88989b52ef1
+  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
+  Realm: cdaef23c4ddb36ab1ddffed23f5a7f3332fc5585
+  RealmSwift: 5576324033f0aa5ef1e0a839a3da2281dff47a7f
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 70c93fc211ddff3fe2b91b8e40b7b834dba0a0c0
+PODFILE CHECKSUM: 67ec18201415b783788d0fa0b77fbadcb689d8ed
 
 COCOAPODS: 1.6.0.beta.2
