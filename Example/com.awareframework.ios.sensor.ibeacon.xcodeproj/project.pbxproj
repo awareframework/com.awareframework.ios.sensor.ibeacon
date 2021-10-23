@@ -316,8 +316,6 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-com.awareframework.ios.sensor.ibeacon_Example/Pods-com.awareframework.ios.sensor.ibeacon_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Networking/Networking.framework",
@@ -329,8 +327,6 @@
 				"${BUILT_PRODUCTS_DIR}/com.awareframework.ios.sensor.ibeacon/com_awareframework_ios_sensor_ibeacon.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Networking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",

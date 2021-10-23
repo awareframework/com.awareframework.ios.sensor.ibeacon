@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'com.awareframework.ios.sensor.ibeacon'
-  s.version          = '0.1.0'
+  s.version          = '0.5.0'
   s.summary          = 'iBeacon Sensor Module for AWARE Framework.'
 
 # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/awareframework/com.awareframework.ios.sensor.ibeacon'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'Apache2', :file => 'LICENSE' }
-  s.author           = { 'tetujin' => 'yuuki.nishiyama@oulu.fi' }
+  s.author           = { 'Yuuki Nishiyama' => 'yuukin@iis.u-tokyo.ac.jp' }
   s.source           = { :git => 'https://github.com/awareframework/com.awareframework.ios.sensor.ibeacon.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
@@ -34,14 +34,7 @@ TODO: Add long description of the pod here.
   
   s.source_files = 'com.awareframework.ios.sensor.ibeacon/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'com.awareframework.ios.sensor.ibeacon' => ['com.awareframework.ios.sensor.ibeacon/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
   s.frameworks = 'CoreLocation'
-  # s.dependency 'AFNetworking', '~> 2.3'
-   s.dependency 'com.awareframework.ios.sensor.core', '~> 0.4.2'
+  s.dependency 'com.awareframework.ios.sensor.core', '~> 0.5.3'
    
 end

@@ -161,7 +161,7 @@ Yuuki Nishiyama, yuuki.nishiyama@oulu.fi
 * [ Apple | Getting Started with iBeacon ](https://developer.apple.com/ibeacon/Getting-Started-with-iBeacon.pdf)
 
 ## License
-Copyright (c) 2019 AWARE Mobile Context Instrumentation Middleware/Framework (http://www.awareframework.com)
+Copyright (c) 2021 AWARE Mobile Context Instrumentation Middleware/Framework (http://www.awareframework.com)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
