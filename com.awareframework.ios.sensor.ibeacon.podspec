@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'com.awareframework.ios.sensor.ibeacon'
-  s.version          = '0.5.0'
+  s.version          = '0.6.0'
   s.summary          = 'iBeacon Sensor Module for AWARE Framework.'
 
 # This description is used to generate tags and improve search results.
@@ -35,6 +35,6 @@ TODO: Add long description of the pod here.
   s.source_files = 'com.awareframework.ios.sensor.ibeacon/Classes/**/*'
   
   s.frameworks = 'CoreLocation'
-  s.dependency 'com.awareframework.ios.sensor.core', '~> 0.5.3'
+  s.dependency 'com.awareframework.ios.sensor.core', '~> 0.6.0'
    
 end
