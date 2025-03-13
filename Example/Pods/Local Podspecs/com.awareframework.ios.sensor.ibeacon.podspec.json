@@ -1,6 +1,6 @@
 {
   "name": "com.awareframework.ios.sensor.ibeacon",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "summary": "iBeacon Sensor Module for AWARE Framework.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/awareframework/com.awareframework.ios.sensor.ibeacon",
@@ -9,22 +9,22 @@
     "file": "LICENSE"
   },
   "authors": {
-    "Yuuki Nishiyama": "yuukin@iis.u-tokyo.ac.jp"
+    "Yuuki Nishiyama": "nishiyama@csis.u-tokyo.ac.jp"
   },
   "source": {
     "git": "https://github.com/awareframework/com.awareframework.ios.sensor.ibeacon.git",
-    "tag": "0.6.0"
+    "tag": "0.7.0"
   },
   "platforms": {
-    "ios": "10.0"
+    "ios": "13.0"
   },
-  "swift_versions": "4.2",
+  "swift_versions": "5",
   "source_files": "com.awareframework.ios.sensor.ibeacon/Classes/**/*",
   "frameworks": "CoreLocation",
   "dependencies": {
     "com.awareframework.ios.sensor.core": [
-      "~> 0.6.0"
+      "~> 0.7"
     ]
   },
-  "swift_version": "4.2"
+  "swift_version": "5"
 }

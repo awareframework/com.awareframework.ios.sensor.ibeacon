@@ -36,3 +36,13 @@ Carthage/Build
 #
 Example/Podfile.lock
 Example/Pods
+
+Pods/
+Podfile.lock
+Pods/
+com.awareframework.ios.sensor.ibeacon.xcworkspace/
+
+.build
+Packages
+.swiftpm
+.*.sw?

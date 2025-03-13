@@ -1,20 +1,17 @@
 PODS:
-  - com.awareframework.ios.sensor.core (0.6.0):
-    - Networking (~> 4.4.0)
-    - ReachabilitySwift (~> 5.0.0)
-    - Realm (~> 10.17.0)
-    - RealmSwift (~> 10.17.0)
+  - com.awareframework.ios.sensor.core (0.7.1):
+    - Networking (~> 5.1.0)
+    - RealmSwift (~> 20.0.0)
     - SwiftyJSON (~> 5.0.1)
-  - com.awareframework.ios.sensor.ibeacon (0.6.0):
-    - com.awareframework.ios.sensor.core (~> 0.6.0)
-  - Networking (4.4.0)
-  - ReachabilitySwift (5.0.0)
-  - Realm (10.17.0):
-    - Realm/Headers (= 10.17.0)
-  - Realm/Headers (10.17.0)
-  - RealmSwift (10.17.0):
-    - Realm (= 10.17.0)
-  - SwiftyJSON (5.0.1)
+  - com.awareframework.ios.sensor.ibeacon (0.7.0):
+    - com.awareframework.ios.sensor.core (~> 0.7)
+  - Networking (5.1.0)
+  - Realm (20.0.0):
+    - Realm/Headers (= 20.0.0)
+  - Realm/Headers (20.0.0)
+  - RealmSwift (20.0.0):
+    - Realm (= 20.0.0)
+  - SwiftyJSON (5.0.2)
 
 DEPENDENCIES:
   - com.awareframework.ios.sensor.ibeacon (from `../`)
@@ -23,7 +20,6 @@ SPEC REPOS:
   trunk:
     - com.awareframework.ios.sensor.core
     - Networking
-    - ReachabilitySwift
     - Realm
     - RealmSwift
     - SwiftyJSON
@@ -33,14 +29,13 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  com.awareframework.ios.sensor.core: 53c07d514f08ddfcb7eb272470b89a733ff6f069
-  com.awareframework.ios.sensor.ibeacon: 025ca686e0b8da3cf793a2eeddbaa794343160a3
-  Networking: cbef47ab030af248248c26a696adb88989b52ef1
-  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  Realm: 9533276bd76f66aa2fd0d3ffe700c1f6023dcab6
-  RealmSwift: 57f5d59aa29852587aad1e861989e7af139894b5
-  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+  com.awareframework.ios.sensor.core: e65152edd5ea5a860cb4467aad9ff83c769cf8e3
+  com.awareframework.ios.sensor.ibeacon: 743d546b241332d14bfc34e159510c6490d2358a
+  Networking: 85b2a0c2d3b6eb548f4eec9880f5f3c49e6b0959
+  Realm: a799b5f9145623fb0bfe149fe81422863631dd0f
+  RealmSwift: f8c4354ebd5053343e6ab9f4eda244145308a51e
+  SwiftyJSON: f5b1bf1cd8dd53cd25887ac0eabcfd92301c6a5a
 
-PODFILE CHECKSUM: 67ec18201415b783788d0fa0b77fbadcb689d8ed
+PODFILE CHECKSUM: 11ac29a17c65e455e23aca8008a8f6725123958a
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.15.2

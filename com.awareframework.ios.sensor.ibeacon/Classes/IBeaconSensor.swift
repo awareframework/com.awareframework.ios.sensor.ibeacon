@@ -56,7 +56,7 @@ public class IBeaconSensor: AwareSensor {
     
     public class Config:SensorConfig {
         
-        public var regions = Array<CLBeaconRegion>()
+        public var regions = Array<CLBeaconIdentityConstraint>()
         public var sensorObserver: IBeaconObserver?
         
         public override init() {
@@ -69,14 +69,19 @@ public class IBeaconSensor: AwareSensor {
             return self
         }
         
-        public func addRegion(_ region:CLBeaconRegion){
+        public func addRegion(_ region:CLBeaconIdentityConstraint){
             self.regions.append(region)
         }
         
-        public func removeRegion(_ id:String){
+        public func removeRegion(_ region:CLBeaconIdentityConstraint){
             
-            for (i, region) in zip(regions.indices, regions) {
-                if region.identifier == id {
+            for (i, r) in zip(regions.indices, regions) {
+                let uuid = r.uuid.uuidString
+                let major = r.major ?? 0
+                let minor = r.minor ?? 0
+                if uuid == region.uuid.uuidString &&
+                   major == (region.major ?? 0) &&
+                   minor == (region.minor ?? 0) {
                     self.regions.remove(at: i)
                 }
             }
@@ -111,6 +116,8 @@ public class IBeaconSensor: AwareSensor {
         case .authorizedWhenInUse, .authorizedAlways:
             // Enable basic location features
             break
+        @unknown default:
+            break
         }
         
         // Do not start services that aren't available.
@@ -120,8 +127,8 @@ public class IBeaconSensor: AwareSensor {
         }
         
         for region in self.CONFIG.regions {
-            if self.CONFIG.debug { print("start a region monitoring: \(region.identifier)") }
-            locationManager?.startMonitoring(for: region)
+            if self.CONFIG.debug { print("start a region monitoring: \(region.description)") }
+            locationManager?.startRangingBeacons(satisfying: region)
         }
         
         self.notificationCenter.post(name: .actionAwareIBeaconStart, object: self)
@@ -130,8 +137,8 @@ public class IBeaconSensor: AwareSensor {
     public override func stop() {
         if self.CONFIG.debug { print(#function) }
         for region in self.CONFIG.regions {
-            if self.CONFIG.debug { print("start a region monitoring: \(region.identifier)") }
-            locationManager?.stopMonitoring(for: region)
+            if self.CONFIG.debug { print("start a region monitoring: \(region.description)") }
+            locationManager?.stopRangingBeacons(satisfying: region)
         }
         self.notificationCenter.post(name: .actionAwareIBeaconStop, object: self)
     }
@@ -231,6 +238,7 @@ extension IBeaconSensor:CLLocationManagerDelegate{
         }
     }
     
+    
     public func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
         if self.CONFIG.debug { print(#function) }
         manager.requestState(for: region);
@@ -256,10 +264,15 @@ extension IBeaconSensor:CLLocationManagerDelegate{
             observer.didDetermineState(region: beaconState)
         }
         
+
+        
         switch (state) {
         case .inside:
             print("iBeacon inside");
-            manager.startRangingBeacons(in: region as! CLBeaconRegion)
+//            manager.startRangingBeacons(in: region as! CLBeaconRegion)
+            if let l = region as? CLBeaconRegion {
+                manager.startRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: l.uuid))
+            }
             break;
         case .outside:
             print("iBeacon outside")
@@ -284,7 +297,7 @@ extension IBeaconSensor:CLLocationManagerDelegate{
                 beaconData.minor = Int16(truncating: beacon.minor)
                 beaconData.proximity = Int8(beacon.proximity.rawValue)
                 beaconData.rssi = beacon.rssi
-                beaconData.uuid = beacon.proximityUUID.uuidString
+                beaconData.uuid = beacon.uuid.uuidString
                 results.append(beaconData)
             }
         }
@@ -326,7 +339,10 @@ extension IBeaconSensor:CLLocationManagerDelegate{
             observer.didEnterRegion(region: beaconEvent)
         }
         
-        manager.startRangingBeacons(in: region as! CLBeaconRegion)
+//        manager.startRangingBeacons(in: region as! CLBeaconRegion)
+        if let l = region as? CLBeaconRegion {
+            manager.startRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: l.uuid))
+        }
     }
     
     public func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
@@ -350,7 +366,10 @@ extension IBeaconSensor:CLLocationManagerDelegate{
             observer.didExitRegion(region: beaconEvent)
         }
         
-        manager.stopRangingBeacons(in: region as! CLBeaconRegion)
+//        manager.stopRangingBeacons(in: region as! CLBeaconRegion)
+        if let l = region as? CLBeaconRegion {
+            manager.stopRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: l.uuid))
+        }
     }
     
 }

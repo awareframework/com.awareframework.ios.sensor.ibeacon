@@ -1,24 +1,35 @@
-# com.awareframework.ios.sensor.ibeacon
+# AWARE: iBeacon
 
-[![CI Status](https://img.shields.io/travis/awareframework/com.awareframework.ios.sensor.ibeacon.svg?style=flat)](https://travis-ci.org/tetujin/com.awareframework.ios.sensor.ibeacon)
-[![Version](https://img.shields.io/cocoapods/v/com.awareframework.ios.sensor.ibeacon.svg?style=flat)](https://cocoapods.org/pods/com.awareframework.ios.sensor.ibeacon)
-[![License](https://img.shields.io/cocoapods/l/com.awareframework.ios.sensor.ibeacon.svg?style=flat)](https://cocoapods.org/pods/com.awareframework.ios.sensor.ibeacon)
-[![Platform](https://img.shields.io/cocoapods/p/com.awareframework.ios.sensor.ibeacon.svg?style=flat)](https://cocoapods.org/pods/com.awareframework.ios.sensor.ibeacon)
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 
 ## Requirements
-iOS 10 or later
+iOS 13 or later
 
 ## Installation
 
-Add `NSLocationWhenInUseUsageDescription` and  `NSLocationAlwaysUsageDescription` keys into Info.plist 
+You can integrate this framework into your project via Swift Package Manager (SwiftPM) or CocoaPods.
 
-If you need persistent background ranging for beacons, you'll need to activate the **Background Modes capability (Location Updates)** for your application.
+### SwiftPM
+1. Open Package Manager Windows
+    * Open `Xcode` -> Select `Menu Bar` -> `File` -> `App Package Dependencies...` 
 
+2. Find the package using the manager
+    * Select `Search Package URL` and type `git@github.com:awareframework/com.awareframework.ios.sensor.ibeacon.git`
+
+3. Import the package into your target.
+
+### CocoaPods
 com.aware.ios.sensor.ibeacon is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'com.awareframework.ios.sensor.ibeacon'
 ```
+
+## Setup
+
+Add `NSLocationWhenInUseUsageDescription` and  `NSLocationAlwaysUsageDescription` keys into Info.plist 
+
+If you need persistent background ranging for beacons, you'll need to activate the **Background Modes capability (Location Updates)** for your application.
 
 Import com.awareframework.ios.sensor.ibeacon library into your source code.
 ```swift
@@ -154,7 +165,7 @@ class Observer:IBeaconObserver{
 ```
 
 ## Author
-Yuuki Nishiyama, yuuki.nishiyama@oulu.fi
+Yuuki Nishiyama (The University of Tokyo), nishiyama@csis.u-tokyo.ac.jp 
 
 ## Related Links
 * [ Apple | iBeacon ](https://developer.apple.com/ibeacon/)

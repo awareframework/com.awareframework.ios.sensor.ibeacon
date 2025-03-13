@@ -1,4 +1,5 @@
 use_frameworks!
+platform :ios, '12.0'
 
 target 'com.awareframework.ios.sensor.ibeacon_Example' do
   pod 'com.awareframework.ios.sensor.ibeacon', :path => '../'
