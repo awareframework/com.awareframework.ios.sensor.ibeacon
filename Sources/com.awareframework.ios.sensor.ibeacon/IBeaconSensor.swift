@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 import UserNotifications
-import com_awareframework_ios_sensor_core
+import com_awareframework_ios_core
 
 
 extension Notification.Name {
@@ -150,10 +150,10 @@ public class IBeaconSensor: AwareSensor {
                 config.debug = self.CONFIG.debug
                 config.dispatchQueue = DispatchQueue(label: "com.awareframework.ios.sensor.ibeacon.sync.queue")
             }
-            engine.startSync(IBeaconData.TABLE_NAME, IBeaconData.self, syncConfig.apply{config in
+            engine.startSync(syncConfig.apply{config in
                 config.completionHandler = { (status, error) in
                     var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_STATUS:status,
-                                                            IBeaconSensor.EXTRA_TABLE_NAME:IBeaconData.TABLE_NAME,
+                                                            IBeaconSensor.EXTRA_TABLE_NAME:IBeaconData.databaseTableName,
                                                             IBeaconSensor.EXTRA_OBJECT_TYPE:IBeaconData.self]
                     if let e = error {
                         userInfo[IBeaconSensor.EXTRA_ERROR] = e
@@ -163,10 +163,10 @@ public class IBeaconSensor: AwareSensor {
                                                  userInfo:userInfo)
                 }
             })
-            engine.startSync(IBeaconRegionStateData.TABLE_NAME, IBeaconRegionStateData.self, syncConfig.apply{config in
+            engine.startSync(syncConfig.apply{config in
                 config.completionHandler = { (status, error) in
                     var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_STATUS:status,
-                                                            IBeaconSensor.EXTRA_TABLE_NAME:IBeaconRegionStateData.TABLE_NAME,
+                                                            IBeaconSensor.EXTRA_TABLE_NAME:IBeaconRegionStateData.databaseTableName,
                                                             IBeaconSensor.EXTRA_OBJECT_TYPE:IBeaconRegionStateData.self]
                     if let e = error {
                         userInfo[IBeaconSensor.EXTRA_ERROR] = e
@@ -176,10 +176,10 @@ public class IBeaconSensor: AwareSensor {
                                                  userInfo:userInfo)
                 }
             })
-            engine.startSync(IBeaconRegionEventData.TABLE_NAME, IBeaconRegionEventData.self, syncConfig.apply{config in
+            engine.startSync(syncConfig.apply{config in
                 config.completionHandler = { (status, error) in
                     var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_STATUS:status,
-                                                            IBeaconSensor.EXTRA_TABLE_NAME:IBeaconRegionEventData.TABLE_NAME,
+                                                            IBeaconSensor.EXTRA_TABLE_NAME:IBeaconRegionEventData.databaseTableName,
                                                             IBeaconSensor.EXTRA_OBJECT_TYPE:IBeaconRegionEventData.self]
                     if let e = error {
                         userInfo[IBeaconSensor.EXTRA_ERROR] = e
@@ -246,12 +246,12 @@ extension IBeaconSensor:CLLocationManagerDelegate{
     
     public func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
         
-        let beaconState = IBeaconRegionStateData()
+        var beaconState = IBeaconRegionStateData()
         beaconState.identifier = region.identifier
         beaconState.state = state.rawValue
         if let engine = self.dbEngine {
-            engine.save(beaconState) { (error) in
-                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_TABLE_NAME:IBeaconRegionStateData.TABLE_NAME,
+            engine.save([beaconState]) { (error) in
+                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_TABLE_NAME:IBeaconRegionStateData.databaseTableName,
                                                         IBeaconSensor.EXTRA_OBJECT_TYPE:IBeaconRegionStateData.self]
                 if let e = error {
                     userInfo[IBeaconSensor.EXTRA_ERROR] = e
@@ -290,12 +290,12 @@ extension IBeaconSensor:CLLocationManagerDelegate{
         var results = Array<IBeaconData>()
         if beacons.count > 0 {
             for beacon in beacons {
-                let beaconData = IBeaconData()
+                var beaconData = IBeaconData()
                 beaconData.identifier = region.identifier
                 beaconData.accuracy = beacon.accuracy
-                beaconData.major = Int16(truncating: beacon.major)
-                beaconData.minor = Int16(truncating: beacon.minor)
-                beaconData.proximity = Int8(beacon.proximity.rawValue)
+                beaconData.major = Int(truncating: beacon.major)
+                beaconData.minor = Int(truncating: beacon.minor)
+                beaconData.proximity = beacon.proximity.rawValue
                 beaconData.rssi = beacon.rssi
                 beaconData.uuid = beacon.uuid.uuidString
                 results.append(beaconData)
@@ -304,7 +304,7 @@ extension IBeaconSensor:CLLocationManagerDelegate{
 
         if let engine = self.dbEngine {
             engine.save(results) { (error) in
-                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_TABLE_NAME:IBeaconData.TABLE_NAME,
+                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_TABLE_NAME:IBeaconData.databaseTableName,
                                                         IBeaconSensor.EXTRA_OBJECT_TYPE:IBeaconData.self]
                 if let e = error {
                     userInfo[IBeaconSensor.EXTRA_ERROR] = e
@@ -321,12 +321,12 @@ extension IBeaconSensor:CLLocationManagerDelegate{
     public func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if self.CONFIG.debug { print(#function) }
         
-        let beaconEvent = IBeaconRegionEventData()
+        var beaconEvent = IBeaconRegionEventData()
         beaconEvent.identifier = region.identifier
         beaconEvent.state = 1
         if let engine = self.dbEngine {
-            engine.save(beaconEvent) { (error) in
-                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_TABLE_NAME:IBeaconRegionEventData.TABLE_NAME,
+            engine.save([beaconEvent]) { (error) in
+                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_TABLE_NAME:IBeaconRegionEventData.databaseTableName,
                                                         IBeaconSensor.EXTRA_OBJECT_TYPE:IBeaconRegionEventData.self]
                 if let e = error {
                     userInfo[IBeaconSensor.EXTRA_ERROR] = e
@@ -348,12 +348,12 @@ extension IBeaconSensor:CLLocationManagerDelegate{
     public func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         if self.CONFIG.debug { print(#function) }
         
-        let beaconEvent = IBeaconRegionEventData()
+        var beaconEvent = IBeaconRegionEventData()
         beaconEvent.identifier = region.identifier
         beaconEvent.state = 0
         if let engine = self.dbEngine {
-            engine.save(beaconEvent) { (error) in
-                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_TABLE_NAME:IBeaconRegionEventData.TABLE_NAME,
+            engine.save([beaconEvent]) { (error) in
+                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_TABLE_NAME:IBeaconRegionEventData.databaseTableName,
                                                         IBeaconSensor.EXTRA_OBJECT_TYPE:IBeaconRegionEventData.self]
                 if let e = error {
                     userInfo[IBeaconSensor.EXTRA_ERROR] = e

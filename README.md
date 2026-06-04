@@ -7,7 +7,7 @@ iOS 13 or later
 
 ## Installation
 
-You can integrate this framework into your project via Swift Package Manager (SwiftPM) or CocoaPods.
+You can integrate this framework into your project via Swift Package Manager (SwiftPM).
 
 ### SwiftPM
 1. Open Package Manager Windows
@@ -18,12 +18,6 @@ You can integrate this framework into your project via Swift Package Manager (Sw
 
 3. Import the package into your target.
 
-### CocoaPods
-com.aware.ios.sensor.ibeacon is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
-
-```ruby
-pod 'com.awareframework.ios.sensor.ibeacon'
-```
 
 ## Setup
 

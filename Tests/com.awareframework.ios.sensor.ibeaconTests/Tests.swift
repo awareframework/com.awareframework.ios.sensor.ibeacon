@@ -1,5 +1,6 @@
 import XCTest
-import com_awareframework_ios_sensor_core
+import com_awareframework_ios_sensor_ibeacon
+import com_awareframework_ios_core
 
 class Tests: XCTestCase {
     
