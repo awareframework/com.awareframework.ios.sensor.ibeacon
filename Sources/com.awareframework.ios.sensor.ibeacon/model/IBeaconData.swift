@@ -10,7 +10,7 @@ public struct IBeaconData: BaseDbModelSQLite {
     public var timezone: Int = AwareUtils.getTimeZone()
     public var os: String = "iOS"
     public var jsonVersion: Int = 1
-    public static let databaseTableName = "iBeaconData"
+    public static let databaseTableName = "ios_ibeacon"
 
     public var uuid: String = ""
     public var major: Int = 0
@@ -60,7 +60,7 @@ public struct IBeaconRegionStateData: BaseDbModelSQLite {
     public var timezone: Int = AwareUtils.getTimeZone()
     public var os: String = "iOS"
     public var jsonVersion: Int = 1
-    public static let databaseTableName = "iBeaconRegionStateData"
+    public static let databaseTableName = "ios_ibeacon_region_state"
 
     public var identifier: String = ""
     public var state: Int = 0
@@ -97,7 +97,7 @@ public struct IBeaconRegionEventData: BaseDbModelSQLite {
     public var timezone: Int = AwareUtils.getTimeZone()
     public var os: String = "iOS"
     public var jsonVersion: Int = 1
-    public static let databaseTableName = "iBeaconRegionEventData"
+    public static let databaseTableName = "ios_ibeacon_region_event"
 
     public var identifier: String = ""
     public var state: Int = 0

@@ -73,47 +73,47 @@ Class to hold the configuration of the sensor.
 
 Contains the raw sensor data.
 
-| Field     | Type   | Description                                                         |
-| --------- | ------ | ------------------------------------------------------------------- |
-| uuid         | String | The unique ID of the beacons being targeted. |
-| major         | Int16 |  The value identifying a group of beacons. (16bit) |
-| minor         | Int16 |  The value identifying a specific beacon within a group. (16bit) |
-| rssi   | Int |  The received signal strength of the beacon, measured in decibels. |
-|identifier| String| The identifer of the beacon. |
-|proximity|Int| The relative distance to the beacon. (0=unknown, 1=immediate, 2=near, 3=far)|
-|accuracy|Double| The accuracy of the proximity value, measured in meters from the beacon. |
-| label     | String | Customizable label. Useful for data calibration or traceability     |
-| deviceId  | String | AWARE device UUID                                                                 |
-| label     | String | Customizable label. Useful for data calibration or traceability     |
-| timestamp | Int64   | Unixtime milliseconds since 1970                                          |
-| timezone  | Int    | Timezone  of the device                                       |
-| os        | String | Operating system of the device (ex. android)                              |
+| Field       | Type   | Description                                                         |
+| ----------- | ------ | ------------------------------------------------------------------- |
+| uuid        | String | The unique ID of the beacons being targeted.                        |
+| major       | Int    | The value identifying a group of beacons.                           |
+| minor       | Int    | The value identifying a specific beacon within a group.             |
+| rssi        | Int    | The received signal strength of the beacon, measured in decibels.   |
+| identifier  | String | The identifier of the beacon.                                       |
+| proximity   | Int    | The relative distance to the beacon. (0=unknown, 1=immediate, 2=near, 3=far) |
+| accuracy    | Double | The accuracy of the proximity value, measured in meters from the beacon. |
+| label       | String | Customizable label. Useful for data calibration or traceability     |
+| deviceId    | String | AWARE device UUID                                                   |
+| timestamp   | Int64  | Unixtime milliseconds since 1970                                    |
+| timezone    | Int    | Timezone of the device                                              |
+| os          | String | Operating system of the device (ex. ios)                            |
+| jsonVersion | Int    | JSON schema version                                                 |
 
 ### iBeacon Region State Data
 
-| Field     | Type   | Description                                                         |
-| --------- | ------ | ------------------------------------------------------------------- |
-|identifier| String| The identifer of the beacon.  |
-|state|Int| The current state of the device with reference to a region. (0=unknown, 1= inside, 2=outside)|
-| label     | String | Customizable label. Useful for data calibration or traceability     |
-| deviceId  | String | AWARE device UUID                                                                 |
-| label     | String | Customizable label. Useful for data calibration or traceability     |
-| timestamp | Int64   | Unixtime milliseconds since 1970                                          |
-| timezone  | Int    | Timezone  of the device                                       |
-| os        | String | Operating system of the device (ex. android)                              |
+| Field       | Type   | Description                                                         |
+| ----------- | ------ | ------------------------------------------------------------------- |
+| identifier  | String | The identifier of the beacon.                                       |
+| state       | Int    | The current state of the device with reference to a region. (0=unknown, 1=inside, 2=outside) |
+| label       | String | Customizable label. Useful for data calibration or traceability     |
+| deviceId    | String | AWARE device UUID                                                   |
+| timestamp   | Int64  | Unixtime milliseconds since 1970                                    |
+| timezone    | Int    | Timezone of the device                                              |
+| os          | String | Operating system of the device (ex. ios)                            |
+| jsonVersion | Int    | JSON schema version                                                 |
 
 ### iBeacon Region Event Data
 
-| Field     | Type   | Description                                                         |
-| --------- | ------ | ------------------------------------------------------------------- |
-|identifier| String| The identifer of the beacon.  |
-|state|Int| The event of region enter and exit events (0=exit, 1=enter)|
-| label     | String | Customizable label. Useful for data calibration or traceability     |
-| deviceId  | String | AWARE device UUID                                                                 |
-| label     | String | Customizable label. Useful for data calibration or traceability     |
-| timestamp | Int64   | Unixtime milliseconds since 1970                                          |
-| timezone  | Int    | Timezone  of the device                                       |
-| os        | String | Operating system of the device (ex. android)                              |
+| Field       | Type   | Description                                                         |
+| ----------- | ------ | ------------------------------------------------------------------- |
+| identifier  | String | The identifier of the beacon.                                       |
+| state       | Int    | The event of region enter and exit events (0=exit, 1=enter)         |
+| label       | String | Customizable label. Useful for data calibration or traceability     |
+| deviceId    | String | AWARE device UUID                                                   |
+| timestamp   | Int64  | Unixtime milliseconds since 1970                                    |
+| timezone    | Int    | Timezone of the device                                              |
+| os          | String | Operating system of the device (ex. ios)                            |
+| jsonVersion | Int    | JSON schema version                                                 |
 
 
 ### Example usage

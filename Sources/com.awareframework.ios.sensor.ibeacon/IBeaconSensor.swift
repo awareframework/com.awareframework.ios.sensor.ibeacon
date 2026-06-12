@@ -95,6 +95,9 @@ public class IBeaconSensor: AwareSensor {
         self.CONFIG = config
         self.locationManager?.delegate = self;
         self.initializeDbEngine(config: config)
+        super.syncConfig = DbSyncConfig().apply { c in
+            c.dispatchQueue = DispatchQueue(label: "com.awareframework.ios.sensor.ibeacon.sync.queue")
+        }
     }
     
     public override convenience init() {
@@ -145,53 +148,36 @@ public class IBeaconSensor: AwareSensor {
     
     public override func sync(force: Bool) {
         if self.CONFIG.debug { print(#function) }
-        if let engine = self.dbEngine {
-            let syncConfig = DbSyncConfig().apply{ config in
-                config.debug = self.CONFIG.debug
-                config.dispatchQueue = DispatchQueue(label: "com.awareframework.ios.sensor.ibeacon.sync.queue")
+        guard let engine = self.dbEngine, let syncConfig = self.syncConfig else { return }
+        syncConfig.debug = self.CONFIG.debug
+        engine.startSync(syncConfig.apply { config in
+            config.completionHandler = { (status, error) in
+                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_STATUS: status,
+                                                        IBeaconSensor.EXTRA_TABLE_NAME: IBeaconData.databaseTableName,
+                                                        IBeaconSensor.EXTRA_OBJECT_TYPE: IBeaconData.self]
+                if let e = error { userInfo[IBeaconSensor.EXTRA_ERROR] = e }
+                self.notificationCenter.post(name: .actionAwareIBeaconSyncCompletion, object: self, userInfo: userInfo)
             }
-            engine.startSync(syncConfig.apply{config in
-                config.completionHandler = { (status, error) in
-                    var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_STATUS:status,
-                                                            IBeaconSensor.EXTRA_TABLE_NAME:IBeaconData.databaseTableName,
-                                                            IBeaconSensor.EXTRA_OBJECT_TYPE:IBeaconData.self]
-                    if let e = error {
-                        userInfo[IBeaconSensor.EXTRA_ERROR] = e
-                    }
-                    self.notificationCenter.post(name: .actionAwareIBeaconSyncCompletion ,
-                                                 object: self,
-                                                 userInfo:userInfo)
-                }
-            })
-            engine.startSync(syncConfig.apply{config in
-                config.completionHandler = { (status, error) in
-                    var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_STATUS:status,
-                                                            IBeaconSensor.EXTRA_TABLE_NAME:IBeaconRegionStateData.databaseTableName,
-                                                            IBeaconSensor.EXTRA_OBJECT_TYPE:IBeaconRegionStateData.self]
-                    if let e = error {
-                        userInfo[IBeaconSensor.EXTRA_ERROR] = e
-                    }
-                    self.notificationCenter.post(name: .actionAwareIBeaconSyncCompletion ,
-                                                 object: self,
-                                                 userInfo:userInfo)
-                }
-            })
-            engine.startSync(syncConfig.apply{config in
-                config.completionHandler = { (status, error) in
-                    var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_STATUS:status,
-                                                            IBeaconSensor.EXTRA_TABLE_NAME:IBeaconRegionEventData.databaseTableName,
-                                                            IBeaconSensor.EXTRA_OBJECT_TYPE:IBeaconRegionEventData.self]
-                    if let e = error {
-                        userInfo[IBeaconSensor.EXTRA_ERROR] = e
-                    }
-                    self.notificationCenter.post(name: .actionAwareIBeaconSyncCompletion ,
-                                                 object: self,
-                                                 userInfo:userInfo)
-                }
-            })
-            
-            self.notificationCenter.post(name: .actionAwareIBeaconSync, object: self)
-        }
+        })
+        engine.startSync(syncConfig.apply { config in
+            config.completionHandler = { (status, error) in
+                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_STATUS: status,
+                                                        IBeaconSensor.EXTRA_TABLE_NAME: IBeaconRegionStateData.databaseTableName,
+                                                        IBeaconSensor.EXTRA_OBJECT_TYPE: IBeaconRegionStateData.self]
+                if let e = error { userInfo[IBeaconSensor.EXTRA_ERROR] = e }
+                self.notificationCenter.post(name: .actionAwareIBeaconSyncCompletion, object: self, userInfo: userInfo)
+            }
+        })
+        engine.startSync(syncConfig.apply { config in
+            config.completionHandler = { (status, error) in
+                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_STATUS: status,
+                                                        IBeaconSensor.EXTRA_TABLE_NAME: IBeaconRegionEventData.databaseTableName,
+                                                        IBeaconSensor.EXTRA_OBJECT_TYPE: IBeaconRegionEventData.self]
+                if let e = error { userInfo[IBeaconSensor.EXTRA_ERROR] = e }
+                self.notificationCenter.post(name: .actionAwareIBeaconSyncCompletion, object: self, userInfo: userInfo)
+            }
+        })
+        self.notificationCenter.post(name: .actionAwareIBeaconSync, object: self)
     }
     
     public func sendNotification(title:String, body:String, interval:TimeInterval, id:String){
