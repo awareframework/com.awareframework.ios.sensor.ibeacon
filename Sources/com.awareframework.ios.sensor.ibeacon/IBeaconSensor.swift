@@ -233,6 +233,7 @@ extension IBeaconSensor:CLLocationManagerDelegate{
     public func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
         
         var beaconState = IBeaconRegionStateData()
+        beaconState.timestamp = Int64(Date().timeIntervalSince1970 * 1000)
         beaconState.identifier = region.identifier
         beaconState.state = state.rawValue
         if let engine = self.dbEngine {
@@ -277,6 +278,7 @@ extension IBeaconSensor:CLLocationManagerDelegate{
         if beacons.count > 0 {
             for beacon in beacons {
                 var beaconData = IBeaconData()
+                beaconData.timestamp = Int64(Date().timeIntervalSince1970 * 1000)
                 beaconData.identifier = region.identifier
                 beaconData.accuracy = beacon.accuracy
                 beaconData.major = Int(truncating: beacon.major)
@@ -308,6 +310,7 @@ extension IBeaconSensor:CLLocationManagerDelegate{
         if self.CONFIG.debug { print(#function) }
         
         var beaconEvent = IBeaconRegionEventData()
+        beaconEvent.timestamp = Int64(Date().timeIntervalSince1970 * 1000)
         beaconEvent.identifier = region.identifier
         beaconEvent.state = 1
         if let engine = self.dbEngine {
@@ -335,6 +338,7 @@ extension IBeaconSensor:CLLocationManagerDelegate{
         if self.CONFIG.debug { print(#function) }
         
         var beaconEvent = IBeaconRegionEventData()
+        beaconEvent.timestamp = Int64(Date().timeIntervalSince1970 * 1000)
         beaconEvent.identifier = region.identifier
         beaconEvent.state = 0
         if let engine = self.dbEngine {
