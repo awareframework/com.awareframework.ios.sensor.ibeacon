@@ -51,6 +51,7 @@ public class IBeaconSensor: AwareSensor {
     public static let EXTRA_TABLE_NAME  = "tableName"
     
     var locationManager: CLLocationManager?
+    private var hasRequestedAlwaysAuthorization = false
     
     public var CONFIG = IBeaconSensor.Config()
     
@@ -110,23 +111,18 @@ public class IBeaconSensor: AwareSensor {
         
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
-            // Request when-in-use authorization initially
-            locationManager?.requestAlwaysAuthorization()
+            locationManager?.requestWhenInUseAuthorization()
             return
         case .restricted, .denied:
             // Disable location features
             return
-        case .authorizedWhenInUse, .authorizedAlways:
+        case .authorizedWhenInUse:
+            requestAlwaysAuthorizationIfNeeded()
+        case .authorizedAlways:
             // Enable basic location features
             break
         @unknown default:
             break
-        }
-        
-        // Do not start services that aren't available.
-        if !CLLocationManager.locationServicesEnabled() {
-            // Location services is not available.
-            return
         }
         
         for region in self.CONFIG.regions {
@@ -135,6 +131,12 @@ public class IBeaconSensor: AwareSensor {
         }
         
         self.notificationCenter.post(name: .actionAwareIBeaconStart, object: self)
+    }
+
+    private func requestAlwaysAuthorizationIfNeeded() {
+        guard !hasRequestedAlwaysAuthorization else { return }
+        hasRequestedAlwaysAuthorization = true
+        locationManager?.requestAlwaysAuthorization()
     }
     
     public override func stop() {
@@ -216,6 +218,7 @@ extension IBeaconSensor:CLLocationManagerDelegate{
             self.start()
             break
         case .authorizedWhenInUse:
+            requestAlwaysAuthorizationIfNeeded()
             self.stop()
             self.start()
             break
@@ -363,4 +366,3 @@ extension IBeaconSensor:CLLocationManagerDelegate{
     }
     
 }
-
