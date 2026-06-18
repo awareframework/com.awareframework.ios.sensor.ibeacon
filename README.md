@@ -11,7 +11,7 @@ You can integrate this framework into your project via Swift Package Manager (Sw
 
 ### SwiftPM
 1. Open Package Manager Windows
-    * Open `Xcode` -> Select `Menu Bar` -> `File` -> `App Package Dependencies...` 
+    * Open `Xcode` -> Select `Menu Bar` -> `File` -> `App Package Dependencies...`
 
 2. Find the package using the manager
     * Select `Search Package URL` and type `git@github.com:awareframework/com.awareframework.ios.sensor.ibeacon.git`
@@ -21,7 +21,7 @@ You can integrate this framework into your project via Swift Package Manager (Sw
 
 ## Setup
 
-Add `NSLocationWhenInUseUsageDescription` and  `NSLocationAlwaysUsageDescription` keys into Info.plist 
+Add `NSLocationWhenInUseUsageDescription` and  `NSLocationAlwaysUsageDescription` keys into Info.plist
 
 If you need persistent background ranging for beacons, you'll need to activate the **Background Modes capability (Location Updates)** for your application.
 
@@ -30,11 +30,11 @@ Import com.awareframework.ios.sensor.ibeacon library into your source code.
 import com_awareframework_ios_sensor_ibeacon
 ```
 
-## Public functions
+## Public Functions
 
 ### IBeaconSensor
 
-+ `init(config:ibeaconSensor.Config?)` : Initializes the IBeacon sensor with the optional configuration.
++ `init(config:ibeaconSensor.Config?)`: Initializes the IBeacon sensor with the optional configuration.
 + `start()`: Starts the IBeacon sensor with the optional configuration.
 + `stop()`: Stops the service.
 
@@ -43,22 +43,23 @@ import com_awareframework_ios_sensor_ibeacon
 Class to hold the configuration of the sensor.
 
 #### Fields
-+ `regions: Array<CLBeaconRegion>`  Regions that you use to detect Bluetooth beacons.
-+ `sensorObserver: IBeaconObserver?` A sensor observer for monitoring sensor events
-+ `enabled: Boolean` Sensor is enabled or not. (default = `false`)
-+ `debug: Boolean` enable/disable logging to `Logcat`. (default = `false`)
-+ `label: String` Label for the data. (default = "")
-+ `deviceId: String` Id of the device that will be associated with the events and the sensor. (default = "")
-+ `dbEncryptionKey` Encryption key for the database. (default = `null`)
-+ `dbType: Engine` Which db engine to use for saving data. (default = `Engine.DatabaseType.NONE`)
-+ `dbPath: String` Path of the database. (default = "aware_ibeacon")
-+ `dbHost: String` Host for syncing the database. (default = `null`)
+
++ `regions: Array<CLBeaconRegion>`: Regions that you use to detect Bluetooth beacons.
++ `sensorObserver: IBeaconObserver?`: A sensor observer for monitoring sensor events.
++ `enabled: Bool`: Sensor is enabled or not. (default = `false`)
++ `debug: Bool`: Enable/disable logging. (default = `false`)
++ `label: String`: Label for the data. (default = `""`)
++ `deviceId: String`: Id of the device that will be associated with the events and the sensor. (default = `""`)
++ `dbEncryptionKey: String?`: Encryption key for the database. (default = `nil`)
++ `dbType: DatabaseType`: Which db engine to use for saving data. (default = `.none`)
++ `dbPath: String`: Path of the database. (default = `"aware_ibeacon"`)
++ `dbHost: String?`: Host for syncing the database. (default = `nil`)
 
 ## Broadcasts
 
 ### Fired Broadcasts
 
-+ `IBeaconSensor.ACTION_AWARE_IBEACON` fired when ibeacon saved data to db after the period ends.
++ `IBeaconSensor.ACTION_AWARE_IBEACON`: fired when ibeacon saved data to db after the period ends.
 
 ### Received Broadcasts
 
@@ -126,7 +127,7 @@ import com_awareframework_ios_sensor_ibeacon
 Generate an ibeacon sensor instance and start/stop the sensor.
 
 ```swift
-let ibeacon = IBeaconSensor(IBeaconSensor.Config().apply{config in
+let ibeacon = IBeaconSensor(IBeaconSensor.Config().apply { config in
     let uuid =  UUID.init(uuidString: "D8219342-6770-4AA4-8075-02E4A10084D9")
     let regionA = CLBeaconRegion(proximityUUID:uuid!, identifier: "Test")
     config.addRegion(regionA)
@@ -159,7 +160,7 @@ class Observer:IBeaconObserver{
 ```
 
 ## Author
-Yuuki Nishiyama (The University of Tokyo), nishiyama@csis.u-tokyo.ac.jp 
+Yuuki Nishiyama (The University of Tokyo), nishiyama@csis.u-tokyo.ac.jp
 
 ## Related Links
 * [ Apple | iBeacon ](https://developer.apple.com/ibeacon/)
