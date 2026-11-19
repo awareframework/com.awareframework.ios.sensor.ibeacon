@@ -33,6 +33,8 @@ public protocol IBeaconObserver {
 }
 
 public class IBeaconSensor: AwareSensor {
+
+    public static let TAG = "AWARE::IBeacon"
     
     public static let ACTION_AWARE_IBEACON = "com.awareframework.ios.sensor.ibeacon"
     public static let ACTION_AWARE_IBEACON_START = "com.awareframework.ios.sensor.ibeacon.start"
@@ -97,6 +99,7 @@ public class IBeaconSensor: AwareSensor {
         
         public override init() {
             super.init()
+            dbTableName = IBeaconData.databaseTableName
             dbPath = "aware_ibeacons"
         }
         
@@ -125,12 +128,36 @@ public class IBeaconSensor: AwareSensor {
         }
     }
     
+
+    /// Creates this sensor's tables if they do not exist yet, so that the first save does not fail.
+    /// Failures are logged: without the tables, the data cannot be saved or uploaded.
+    private func initializeTables() {
+        guard CONFIG.dbType == .sqlite else { return }
+        guard let queue = (dbEngine as? SQLiteEngine)?.getSQLiteInstance() else {
+            print(IBeaconSensor.TAG, "[Error] Cannot open the database '\(CONFIG.dbPath)'. The tables are not created.")
+            return
+        }
+        let tables: [(name: String, create: () throws -> Void)] = [
+            (IBeaconData.databaseTableName, { try IBeaconData.createTable(queue: queue) }),
+            (IBeaconRegionStateData.databaseTableName, { try IBeaconRegionStateData.createTable(queue: queue) }),
+            (IBeaconRegionEventData.databaseTableName, { try IBeaconRegionEventData.createTable(queue: queue) }),
+        ]
+        for table in tables {
+            do {
+                try table.create()
+            } catch {
+                print(IBeaconSensor.TAG, "[Error] Cannot create the table '\(table.name)': \(error)")
+            }
+        }
+    }
+
     public init(_ config:IBeaconSensor.Config){
         super.init()
         self.locationManager = CLLocationManager()
         self.CONFIG = config
         self.locationManager?.delegate = self;
         self.initializeDbEngine(config: config)
+        initializeTables()
         super.syncConfig = DbSyncConfig().apply { c in
             c.dispatchQueue = DispatchQueue(label: "com.awareframework.ios.sensor.ibeacon.sync.queue")
         }
@@ -183,37 +210,52 @@ public class IBeaconSensor: AwareSensor {
         self.postOnMain(name: .actionAwareIBeaconStop, object: self)
     }
     
-    public override func sync(force: Bool) {
-        if self.CONFIG.debug { print(#function) }
-        guard let engine = self.dbEngine, let syncConfig = self.syncConfig else { return }
-        syncConfig.debug = self.CONFIG.debug
-        engine.startSync(syncConfig.apply { config in
-            config.completionHandler = { (status, error) in
+    /// The tables of this sensor, with the type of their rows (for the sync completion notification).
+    static let tables: [(name: String, type: Any.Type)] = [
+        (IBeaconData.databaseTableName, IBeaconData.self),
+        (IBeaconRegionStateData.databaseTableName, IBeaconRegionStateData.self),
+        (IBeaconRegionEventData.databaseTableName, IBeaconRegionEventData.self),
+    ]
+
+    /// One engine per table, used for upload. An engine uploads only the table named in its config,
+    /// so each table needs its own engine. `dbEngine` is reused for the table it already names.
+    /// (Up to now one engine was synced once per table, so only one table was ever uploaded.)
+    var syncEngines: [String: Engine] = [:]
+
+    private func syncEngine(for tableName: String) -> Engine? {
+        if let engine = syncEngines[tableName] { return engine }
+        let engine: Engine
+        if let main = dbEngine, main.config.tableName == tableName {
+            engine = main
+        } else {
+            engine = Engine.Builder()
+                .setPath(CONFIG.dbPath)
+                .setType(CONFIG.dbType)
+                .setHost(CONFIG.dbHost)
+                .setEncryptionKey(CONFIG.dbEncryptionKey)
+                .setTableName(tableName)
+                .build()
+        }
+        syncEngines[tableName] = engine
+        return engine
+    }
+
+    public override func sync(force: Bool = false) {
+        guard let base = self.syncConfig else { return }
+        base.debug = self.CONFIG.debug
+        for table in IBeaconSensor.tables {
+            // A copy per table, so that each table keeps its own completion handler and queue
+            let c = base.copy()
+            c.dispatchQueue = DispatchQueue(label: "com.awareframework.ios.sensor.ibeacon.sync.\(table.name)")
+            c.completionHandler = { (status, error) in
                 var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_STATUS: status,
-                                                        IBeaconSensor.EXTRA_TABLE_NAME: IBeaconData.databaseTableName,
-                                                        IBeaconSensor.EXTRA_OBJECT_TYPE: IBeaconData.self]
+                                                        IBeaconSensor.EXTRA_TABLE_NAME: table.name,
+                                                        IBeaconSensor.EXTRA_OBJECT_TYPE: table.type]
                 if let e = error { userInfo[IBeaconSensor.EXTRA_ERROR] = e }
                 self.postOnMain(name: .actionAwareIBeaconSyncCompletion, object: self, userInfo: userInfo)
             }
-        })
-        engine.startSync(syncConfig.apply { config in
-            config.completionHandler = { (status, error) in
-                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_STATUS: status,
-                                                        IBeaconSensor.EXTRA_TABLE_NAME: IBeaconRegionStateData.databaseTableName,
-                                                        IBeaconSensor.EXTRA_OBJECT_TYPE: IBeaconRegionStateData.self]
-                if let e = error { userInfo[IBeaconSensor.EXTRA_ERROR] = e }
-                self.postOnMain(name: .actionAwareIBeaconSyncCompletion, object: self, userInfo: userInfo)
-            }
-        })
-        engine.startSync(syncConfig.apply { config in
-            config.completionHandler = { (status, error) in
-                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_STATUS: status,
-                                                        IBeaconSensor.EXTRA_TABLE_NAME: IBeaconRegionEventData.databaseTableName,
-                                                        IBeaconSensor.EXTRA_OBJECT_TYPE: IBeaconRegionEventData.self]
-                if let e = error { userInfo[IBeaconSensor.EXTRA_ERROR] = e }
-                self.postOnMain(name: .actionAwareIBeaconSyncCompletion, object: self, userInfo: userInfo)
-            }
-        })
+            syncEngine(for: table.name)?.startSync(c)
+        }
         self.postOnMain(name: .actionAwareIBeaconSync, object: self)
     }
     
