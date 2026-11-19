@@ -52,6 +52,41 @@ public class IBeaconSensor: AwareSensor {
     
     var locationManager: CLLocationManager?
     private var hasRequestedAlwaysAuthorization = false
+
+    /// Rows are written to the database here, in the order they were received, not on the main
+    /// thread (Core Location calls the delegate on the main thread; ranging reports every second).
+    private let saveQueue = DispatchQueue(label: "com.awareframework.ios.sensor.ibeacon.save", qos: .utility)
+
+    /// Saves `rows` on `saveQueue`, then posts `actionAwareIBeacon` on the main thread.
+    private func save<T: BaseDbModelSQLite>(_ rows: [T], type: T.Type) {
+        guard let engine = self.dbEngine else { return }
+        saveQueue.async {
+            engine.save(rows) { error in
+                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_TABLE_NAME: T.databaseTableName,
+                                                        IBeaconSensor.EXTRA_OBJECT_TYPE: T.self]
+                if let e = error {
+                    userInfo[IBeaconSensor.EXTRA_ERROR] = e
+                }
+                self.postOnMain(name: .actionAwareIBeacon, object: self, userInfo: userInfo)
+            }
+        }
+    }
+
+    /// Waits until every row handed to `save(_:type:)` so far is written. For tests.
+    func waitForPendingSaves() {
+        saveQueue.sync {}
+    }
+
+    /// Posts a notification on the main thread (right away when already on it).
+    private func postOnMain(name: Notification.Name, object: Any?, userInfo: [AnyHashable: Any]? = nil) {
+        if Thread.isMainThread {
+            notificationCenter.post(name: name, object: object, userInfo: userInfo)
+        } else {
+            DispatchQueue.main.async {
+                self.notificationCenter.post(name: name, object: object, userInfo: userInfo)
+            }
+        }
+    }
     
     public var CONFIG = IBeaconSensor.Config()
     
@@ -130,7 +165,7 @@ public class IBeaconSensor: AwareSensor {
             locationManager?.startRangingBeacons(satisfying: region)
         }
         
-        self.notificationCenter.post(name: .actionAwareIBeaconStart, object: self)
+        self.postOnMain(name: .actionAwareIBeaconStart, object: self)
     }
 
     private func requestAlwaysAuthorizationIfNeeded() {
@@ -145,7 +180,7 @@ public class IBeaconSensor: AwareSensor {
             if self.CONFIG.debug { print("start a region monitoring: \(region.description)") }
             locationManager?.stopRangingBeacons(satisfying: region)
         }
-        self.notificationCenter.post(name: .actionAwareIBeaconStop, object: self)
+        self.postOnMain(name: .actionAwareIBeaconStop, object: self)
     }
     
     public override func sync(force: Bool) {
@@ -158,7 +193,7 @@ public class IBeaconSensor: AwareSensor {
                                                         IBeaconSensor.EXTRA_TABLE_NAME: IBeaconData.databaseTableName,
                                                         IBeaconSensor.EXTRA_OBJECT_TYPE: IBeaconData.self]
                 if let e = error { userInfo[IBeaconSensor.EXTRA_ERROR] = e }
-                self.notificationCenter.post(name: .actionAwareIBeaconSyncCompletion, object: self, userInfo: userInfo)
+                self.postOnMain(name: .actionAwareIBeaconSyncCompletion, object: self, userInfo: userInfo)
             }
         })
         engine.startSync(syncConfig.apply { config in
@@ -167,7 +202,7 @@ public class IBeaconSensor: AwareSensor {
                                                         IBeaconSensor.EXTRA_TABLE_NAME: IBeaconRegionStateData.databaseTableName,
                                                         IBeaconSensor.EXTRA_OBJECT_TYPE: IBeaconRegionStateData.self]
                 if let e = error { userInfo[IBeaconSensor.EXTRA_ERROR] = e }
-                self.notificationCenter.post(name: .actionAwareIBeaconSyncCompletion, object: self, userInfo: userInfo)
+                self.postOnMain(name: .actionAwareIBeaconSyncCompletion, object: self, userInfo: userInfo)
             }
         })
         engine.startSync(syncConfig.apply { config in
@@ -176,10 +211,10 @@ public class IBeaconSensor: AwareSensor {
                                                         IBeaconSensor.EXTRA_TABLE_NAME: IBeaconRegionEventData.databaseTableName,
                                                         IBeaconSensor.EXTRA_OBJECT_TYPE: IBeaconRegionEventData.self]
                 if let e = error { userInfo[IBeaconSensor.EXTRA_ERROR] = e }
-                self.notificationCenter.post(name: .actionAwareIBeaconSyncCompletion, object: self, userInfo: userInfo)
+                self.postOnMain(name: .actionAwareIBeaconSyncCompletion, object: self, userInfo: userInfo)
             }
         })
-        self.notificationCenter.post(name: .actionAwareIBeaconSync, object: self)
+        self.postOnMain(name: .actionAwareIBeaconSync, object: self)
     }
     
     public func sendNotification(title:String, body:String, interval:TimeInterval, id:String){
@@ -239,16 +274,7 @@ extension IBeaconSensor:CLLocationManagerDelegate{
         beaconState.timestamp = Int64(Date().timeIntervalSince1970 * 1000)
         beaconState.identifier = region.identifier
         beaconState.state = state.rawValue
-        if let engine = self.dbEngine {
-            engine.save([beaconState]) { (error) in
-                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_TABLE_NAME:IBeaconRegionStateData.databaseTableName,
-                                                        IBeaconSensor.EXTRA_OBJECT_TYPE:IBeaconRegionStateData.self]
-                if let e = error {
-                    userInfo[IBeaconSensor.EXTRA_ERROR] = e
-                }
-                self.notificationCenter.post(name: .actionAwareIBeacon, object: self, userInfo:userInfo)
-            }
-        }
+        save([beaconState], type: IBeaconRegionStateData.self)
         
         if let observer = CONFIG.sensorObserver {
             observer.didDetermineState(region: beaconState)
@@ -293,16 +319,7 @@ extension IBeaconSensor:CLLocationManagerDelegate{
             }
         }
 
-        if let engine = self.dbEngine {
-            engine.save(results) { (error) in
-                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_TABLE_NAME:IBeaconData.databaseTableName,
-                                                        IBeaconSensor.EXTRA_OBJECT_TYPE:IBeaconData.self]
-                if let e = error {
-                    userInfo[IBeaconSensor.EXTRA_ERROR] = e
-                }
-                self.notificationCenter.post(name: .actionAwareIBeacon, object: self, userInfo:userInfo)
-            }
-        }
+        save(results, type: IBeaconData.self)
         
         if let observer = CONFIG.sensorObserver {
             observer.didRangeBeacons(beacons: results)
@@ -316,16 +333,7 @@ extension IBeaconSensor:CLLocationManagerDelegate{
         beaconEvent.timestamp = Int64(Date().timeIntervalSince1970 * 1000)
         beaconEvent.identifier = region.identifier
         beaconEvent.state = 1
-        if let engine = self.dbEngine {
-            engine.save([beaconEvent]) { (error) in
-                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_TABLE_NAME:IBeaconRegionEventData.databaseTableName,
-                                                        IBeaconSensor.EXTRA_OBJECT_TYPE:IBeaconRegionEventData.self]
-                if let e = error {
-                    userInfo[IBeaconSensor.EXTRA_ERROR] = e
-                }
-                self.notificationCenter.post(name: .actionAwareIBeacon, object: self, userInfo:userInfo)
-            }
-        }
+        save([beaconEvent], type: IBeaconRegionEventData.self)
         
         if let observer = CONFIG.sensorObserver {
             observer.didEnterRegion(region: beaconEvent)
@@ -344,16 +352,7 @@ extension IBeaconSensor:CLLocationManagerDelegate{
         beaconEvent.timestamp = Int64(Date().timeIntervalSince1970 * 1000)
         beaconEvent.identifier = region.identifier
         beaconEvent.state = 0
-        if let engine = self.dbEngine {
-            engine.save([beaconEvent]) { (error) in
-                var userInfo: Dictionary<String,Any> = [IBeaconSensor.EXTRA_TABLE_NAME:IBeaconRegionEventData.databaseTableName,
-                                                        IBeaconSensor.EXTRA_OBJECT_TYPE:IBeaconRegionEventData.self]
-                if let e = error {
-                    userInfo[IBeaconSensor.EXTRA_ERROR] = e
-                }
-                self.notificationCenter.post(name: .actionAwareIBeacon, object: self, userInfo:userInfo)
-            }
-        }
+        save([beaconEvent], type: IBeaconRegionEventData.self)
         
         if let observer = CONFIG.sensorObserver {
             observer.didExitRegion(region: beaconEvent)
