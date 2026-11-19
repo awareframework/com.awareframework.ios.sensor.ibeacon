@@ -67,5 +67,25 @@ class Tests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
+
+    /// The sensor creates all its tables, and each table can be read back for sync by an engine
+    /// for that table (one engine used to be synced for every table, so only one was ever uploaded)
+    func testSensorCreatesAndSyncsEveryTable() {
+        let path = "create_table_test_\(UUID().uuidString)"
+        let sensor = IBeaconSensor(IBeaconSensor.Config().apply { config in config.dbPath = path })
+        guard let engine = sensor.dbEngine else { return XCTFail("no engine") }
+        let saved = expectation(description: "saved")
+        saved.expectedFulfillmentCount = 3
+        engine.save([IBeaconData()]) { error in XCTAssertNil(error); saved.fulfill() }
+        engine.save([IBeaconRegionStateData()]) { error in XCTAssertNil(error); saved.fulfill() }
+        engine.save([IBeaconRegionEventData()]) { error in XCTAssertNil(error); saved.fulfill() }
+        wait(for: [saved], timeout: 5)
+        func tableEngine(_ table: String) -> Engine {
+            Engine.Builder().setPath(path).setType(.sqlite).setTableName(table).build()
+        }
+        XCTAssertEqual(tableEngine(IBeaconData.databaseTableName).fetch(filter: nil, limit: nil)?.count, 1, "IBeaconData can be read for sync")
+        XCTAssertEqual(tableEngine(IBeaconRegionStateData.databaseTableName).fetch(filter: nil, limit: nil)?.count, 1, "IBeaconRegionStateData can be read for sync")
+        XCTAssertEqual(tableEngine(IBeaconRegionEventData.databaseTableName).fetch(filter: nil, limit: nil)?.count, 1, "IBeaconRegionEventData can be read for sync")
+        XCTAssertEqual(IBeaconSensor.tables.map(\.name), [IBeaconData.databaseTableName, IBeaconRegionStateData.databaseTableName, IBeaconRegionEventData.databaseTableName])
+    }
 }
