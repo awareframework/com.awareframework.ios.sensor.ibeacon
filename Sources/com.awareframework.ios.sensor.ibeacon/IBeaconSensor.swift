@@ -170,10 +170,18 @@ public class IBeaconSensor: AwareSensor {
     
     public override func start() {
         if self.CONFIG.debug { print(#function) }
-        
-        switch CLLocationManager.authorizationStatus() {
+        guard let locationManager else { return }
+
+        let authorizationStatus: CLAuthorizationStatus
+        if #available(iOS 14.0, *) {
+            authorizationStatus = locationManager.authorizationStatus
+        } else {
+            authorizationStatus = CLLocationManager.authorizationStatus()
+        }
+
+        switch authorizationStatus {
         case .notDetermined:
-            locationManager?.requestWhenInUseAuthorization()
+            locationManager.requestWhenInUseAuthorization()
             return
         case .restricted, .denied:
             // Disable location features
@@ -189,7 +197,7 @@ public class IBeaconSensor: AwareSensor {
         
         for region in self.CONFIG.regions {
             if self.CONFIG.debug { print("start a region monitoring: \(region.description)") }
-            locationManager?.startRangingBeacons(satisfying: region)
+            locationManager.startRangingBeacons(satisfying: region)
         }
         
         self.postOnMain(name: .actionAwareIBeaconStart, object: self)
